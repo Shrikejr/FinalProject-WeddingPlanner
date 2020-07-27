@@ -1,0 +1,1 @@
+run = "javac Main.java && javac PersonRegister.java && javac UserRegister.java && javac GenericSession.java && javac UserSession.java && javac WeddingPlan.java && javac AdminSession.java && java Main"
