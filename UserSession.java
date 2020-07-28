@@ -84,7 +84,7 @@ public class UserSession extends GenericSession {
 			}
 			System.out.println("\n");
 		}
-		System.out.println("FUCK YOU!!!!!");
+		System.out.println("aaaaaaa");
 		System.out.println(Arrays.deepToString(usersDatabase));
 	}
 
