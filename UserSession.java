@@ -30,14 +30,14 @@ public class UserSession extends GenericSession {
 					break;
 				case 2:
 					System.out.println("\n");
-					printTheStuff(userPlanDatabase);
+					printTheStuffExt(userPlanDatabase);
 					break;
 				case 3:
 					savePlans(userPlanDatabase);
-          				break;
+          break;
 				case 4:
-          				loadPlans(userPlanDatabase);
-          				break;
+          loadPlans(userPlanDatabase);
+          break;
 				case 5:
 					break;
 				default:
@@ -76,14 +76,15 @@ public class UserSession extends GenericSession {
 	}
 
 	public static void printTheStuffExt(String[][] usersDatabase){
-		for(int i=1; i<usersDatabase.length; i++){
-			for(int j=0; j<usersDatabase[0].length; j++){
-				if (usersDatabase[i][j] != null) {
-					System.out.print(usersDatabase[i][j]);
+		for(int i=0; i<countFilled(usersDatabase) + 1; i++){
+			for(int j=0; j<6; j++){
+				if (usersDatabase[j][i] != null) {
+					System.out.print(usersDatabase[j][i]);
 				}
+        System.out.println(" ");
 			}
-			System.out.println("");
 		}
+    System.out.println("\n");
 	}
 
 	static public int countFilled(String[][] usersDatabase){
@@ -102,10 +103,10 @@ public class UserSession extends GenericSession {
 		try {
 			FileWriter planList = new FileWriter("planlist.txt");
       BufferedWriter outputWriter = new BufferedWriter(planList);
-  		for(int i=0; i<countFilled(usersDatabase) + 1; i++){
-			for(int j=0; j<6; j++){
-				if (usersDatabase[j][i] != null) {
-					outputWriter.write(usersDatabase[j][i]);
+		for(int i=0; i<usersDatabase.length; i++){
+			for(int j=0; j<usersDatabase[0].length; j++){
+				if (usersDatabase[i][j] != null) {
+					outputWriter.write(usersDatabase[i][j]);
           outputWriter.flush();
 				}
         outputWriter.write(" ");
