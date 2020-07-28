@@ -30,14 +30,14 @@ public class UserSession extends GenericSession {
 					break;
 				case 2:
 					System.out.println("\n");
-					printTheStuffExt(userPlanDatabase);
+					printTheStuff(userPlanDatabase);
 					break;
 				case 3:
 					savePlans(userPlanDatabase);
-          break;
+          				break;
 				case 4:
-          loadPlans(userPlanDatabase);
-          break;
+          				loadPlans(userPlanDatabase);
+          				break;
 				case 5:
 					break;
 				default:
