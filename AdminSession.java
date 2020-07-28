@@ -1,3 +1,4 @@
+
 import java.io.*;
 import java.util.List;
 import java.util.ArrayList;
@@ -21,7 +22,7 @@ public class AdminSession extends GenericSession{
 				System.out.println("2) View Existing Customers");
 				System.out.println("3) Close");
 				System.out.println("Please Enter an Option:");
-				options = Integer.parseInt(scanner.nextLine());
+				options = scanner.nextInt();
 				switch (options) {
 				case 1:
 					UserRegister newUser = new UserRegister();
@@ -41,7 +42,6 @@ public class AdminSession extends GenericSession{
 				continue;
 			}
 		} while (options != 3);
-		scanner.close();
 	}
 	void showCustomerListOptions() {
 		int customerOptions = 0;
@@ -65,7 +65,6 @@ public class AdminSession extends GenericSession{
 				}  
 			} while (customerOptions != 0);
 		}
-		scanner.close();
 	}
 
 
