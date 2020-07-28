@@ -1,3 +1,4 @@
+package we;
 
 import java.io.*;
 import java.util.List;
@@ -55,7 +56,7 @@ public class AdminSession extends GenericSession{
 						System.out.println((i + 1) + ") " + customerNameList.get(i));
 					}
 					System.out.println("Press 0 to exit.");
-					customerOptions = Integer.parseInt(scanner.nextLine());
+					customerOptions = scanner.nextInt();
 					if ((customerOptions <= (customerNameList.size())) && customerOptions != 0) {
 						System.out.println(customerList.get(customerOptions - 1));
 					}
