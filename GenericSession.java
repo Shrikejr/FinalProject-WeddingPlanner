@@ -1,5 +1,3 @@
-package we;
-
 import java.io.IOException;
 import java.util.*;
 
