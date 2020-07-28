@@ -29,8 +29,7 @@ public class UserSession extends GenericSession {
 					}
 					break;
 				case 2:
-					System.out.println("\n");
-					printTheStuffExt(userPlanDatabase);
+					planOptions();
 					break;
 				case 3:
 					savePlans(userPlanDatabase);
@@ -44,11 +43,38 @@ public class UserSession extends GenericSession {
 					System.out.println("That is not a valid number.");
 				}
 			} catch (InputMismatchException e) {
-				System.out.println("Invalid User Input. Please enter a value from 0 to 5.");
+				System.out.println("Invalid User Input. Please enter a value from 1 to 5.");
 				continue;
 			}
 		} while (useroptions != 5);
 	}
+  public void planOptions() throws IOException {
+    Scanner scanner = new Scanner(System.in);
+		int planoptionschoice = 0;
+    do {
+      try {
+				System.out.println("1) View List of Plans");
+				System.out.println("2) View Plans In Detail");
+				System.out.println("3) Exit");
+        planoptionschoice = scanner.nextInt();
+        switch(planoptionschoice) {
+          case 1:
+            printTheStuff(userPlanDatabase);
+            break;
+          case 2:
+            printTheStuffExt(userPlanDatabase);
+            break;
+          case 3:
+            break;
+          default:
+            System.out.println("That is not a valid number.");
+        }
+      } catch (InputMismatchException e) {
+				System.out.println("Invalid User Input. Please enter a value from 1 to 3.");
+				continue;
+			}
+    } while (planoptionschoice != 3);
+  }
 	public void addEmUp(String[][] usersDatabase, WeddingPlan toAdd){
 		usersDatabase[0][toAdd.getPlanNumber()-1] = toAdd.getPlanUsername();
 		usersDatabase[1][toAdd.getPlanNumber()-1] = toAdd.getPlanName();
@@ -79,13 +105,12 @@ public class UserSession extends GenericSession {
 			for(int j=0; j<6; j++){
 				if (usersDatabase[j][i] != null) {
 					System.out.print(usersDatabase[j][i]);
+          System.out.println(" ");
 				}
-				System.out.println(" ");
 			}
-			System.out.println("\n");
+      System.out.println(" ");
 		}
-		System.out.println("aaaaaaa");
-		System.out.println(Arrays.deepToString(usersDatabase));
+		//System.out.println(Arrays.deepToString(usersDatabase));
 	}
 
 	static public int countFilled(String[][] usersDatabase){
@@ -138,7 +163,7 @@ public class UserSession extends GenericSession {
 					}
 				}
 			}
-			System.out.println(Arrays.deepToString(usersDatabase));
+			//System.out.println(Arrays.deepToString(usersDatabase));
 		} catch (IOException e) {
 			System.out.println("An error occurred.");
 			e.printStackTrace();  
