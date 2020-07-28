@@ -2,12 +2,12 @@ import java.io.*;
 import java.util.*;
 public class UserSession extends GenericSession {
 	private String[][] userPlanDatabase = new String[6][5];
-	private int options;
 	public UserSession() throws IOException{
 		showUserOptions();
 	}
 	void showUserOptions() throws IOException{
 		Scanner scanner = new Scanner(System.in);
+		int useroptions = 0;
 		do {
 			try {
 				System.out.println("Welcome!");
@@ -18,8 +18,8 @@ public class UserSession extends GenericSession {
 				System.out.println("4) Load Previous Plans from File");
 				System.out.println("5) Close (Notify Receptionist)");
 				System.out.println("Please Enter an Option:");
-				int options = scanner.nextInt();
-				switch (options) {
+				useroptions = scanner.nextInt();
+				switch (useroptions) {
 				case 1:
 					if (countFilled(userPlanDatabase) < 5) {
 						WeddingPlan aWedding = new WeddingPlan();
@@ -47,8 +47,7 @@ public class UserSession extends GenericSession {
 				System.out.println("Invalid User Input. Please enter a value from 0 to 5.");
 				continue;
 			}
-		} while (options != 5);
-		scanner.close();
+		} while (useroptions != 5);
 	}
 	public void addEmUp(String[][] usersDatabase, WeddingPlan toAdd){
 		usersDatabase[0][toAdd.getPlanNumber()-1] = toAdd.getPlanUsername();
@@ -85,7 +84,7 @@ public class UserSession extends GenericSession {
 			}
 			System.out.println("\n");
 		}
-		System.out.println("WE LIKE TO PARTY (TEST)");
+		System.out.println("FUCK YOU!!!!!");
 		System.out.println(Arrays.deepToString(usersDatabase));
 	}
 
@@ -120,6 +119,7 @@ public class UserSession extends GenericSession {
 				outputWriter.flush();
 
 			}
+			outputWriter.close();
 			System.out.println("File created!");
 		} catch (IOException e) {
 			System.out.println("An error occurred.");
