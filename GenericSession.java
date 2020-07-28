@@ -16,7 +16,7 @@ public class GenericSession{
 				System.out.println("2) IT Administrator");
 				System.out.println("3) Shut Down");
 				System.out.println("Please select what type of user you are (enter number): ");
-				int userType = scanner.nextInt();
+				int userType = Integer.parseInt(scanner.nextLine());
 
 				switch (userType) {
 				case 1:
