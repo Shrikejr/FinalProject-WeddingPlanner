@@ -1,3 +1,5 @@
+package we;
+
 import java.io.*;
 import java.util.List;
 import java.util.ArrayList;
@@ -6,7 +8,7 @@ import java.util.Scanner;
 public class AdminSession extends GenericSession{
 	ArrayList<UserRegister> customerList = new ArrayList<UserRegister>();
 	ArrayList<String> customerNameList = new ArrayList<>();
-	
+
 	public AdminSession() {
 		showUserOptions();
 	}
@@ -34,13 +36,14 @@ public class AdminSession extends GenericSession{
 				case 3:
 					break;
 				default:
-          System.out.println("That is not a valid number.");
+					System.out.println("That is not a valid number.");
 				}
 			} catch (InputMismatchException e) {
-				System.out.println("Invalid User Input. Please enter a value from 0 to 5.");
+				System.out.println("Invalid User Input. Please enter a value from 0 to 3.");
 				continue;
 			}
-		} while (options != 5);
+		} while (options != 3);
+		scanner.close();
 	}
 	void showCustomerListOptions() {
 		int customerOptions = 0;
@@ -53,17 +56,18 @@ public class AdminSession extends GenericSession{
 					for (int i = 0; i < customerNameList.size();i++) { 		      
 						System.out.println((i + 1) + ") " + customerNameList.get(i));
 					}
-					System.out.println("Enter value to see customer data, or enter 0 to exit.");
+					System.out.println("Press 0 to exit.");
 					customerOptions = scanner.nextInt();
 					if ((customerOptions <= (customerNameList.size())) && customerOptions != 0) {
 						System.out.println(customerList.get(customerOptions - 1));
 					}
 				} catch (InputMismatchException e) {
-					System.out.println("Invalid User Input. Please enter a value from the list.");
+					System.out.println("Invalid User Input. Please press 0 to exit.");
 					continue;
 				}  
 			} while (customerOptions != 0);
 		}
+		scanner.close();
 	}
 
 
