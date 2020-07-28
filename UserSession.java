@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.*;
 public class UserSession extends GenericSession {
 	private String[][] userPlanDatabase = new String[6][5];
-  private int options;
+	private int options;
 	public UserSession() throws IOException{
 		showUserOptions();
 	}
@@ -34,10 +34,10 @@ public class UserSession extends GenericSession {
 					break;
 				case 3:
 					savePlans(userPlanDatabase);
-          break;
+					break;
 				case 4:
-          loadPlans(userPlanDatabase);
-          break;
+					loadPlans(userPlanDatabase);
+					break;
 				case 5:
 					break;
 				default:
@@ -81,10 +81,12 @@ public class UserSession extends GenericSession {
 				if (usersDatabase[j][i] != null) {
 					System.out.print(usersDatabase[j][i]);
 				}
-        System.out.println(" ");
+				System.out.println(" ");
 			}
+			System.out.println("\n");
 		}
-    System.out.println("\n");
+		System.out.println("WE LIKE TO PARTY (TEST)");
+		System.out.println(Arrays.deepToString(usersDatabase));
 	}
 
 	static public int countFilled(String[][] usersDatabase){
@@ -98,43 +100,49 @@ public class UserSession extends GenericSession {
 		}
 		return countOfFilled;
 	}
-	
+
 	public static void savePlans(String[][] usersDatabase) throws IOException {
 		try {
 			FileWriter planList = new FileWriter("planlist.txt");
-      BufferedWriter outputWriter = new BufferedWriter(planList);
-		for(int i=0; i<usersDatabase.length; i++){
-			for(int j=0; j<usersDatabase[0].length; j++){
-				if (usersDatabase[i][j] != null) {
-					outputWriter.write(usersDatabase[i][j]);
-          outputWriter.flush();
+			BufferedWriter outputWriter = new BufferedWriter(planList);
+			for(int i=0; i<usersDatabase.length; i++){
+				for(int j=0; j<usersDatabase[0].length; j++){
+					if ((usersDatabase[i][j] != null) && (usersDatabase[i][j+1] != null)) {
+						outputWriter.write(usersDatabase[i][j]);
+						outputWriter.write("3t356");
+						outputWriter.flush();
+					} else if (usersDatabase[i][j] != null) {
+						outputWriter.write(usersDatabase[i][j]);
+						outputWriter.flush();
+					}
 				}
-        outputWriter.write(" ");
-        outputWriter.flush();
-			}
-        outputWriter.write("\n");
-        outputWriter.flush();
+				outputWriter.write("\n");
+				outputWriter.flush();
 
-		}
-				System.out.println("File created!");
-    } catch (IOException e) {
+			}
+			System.out.println("File created!");
+		} catch (IOException e) {
 			System.out.println("An error occurred.");
 			e.printStackTrace();
 		}
 	}
 
-  public static void loadPlans(String[][] usersDatabase) throws IOException{
-    Scanner sc = new Scanner(new BufferedReader(new FileReader("planlist.txt")));
-    while(sc.hasNextLine()) {
-         for (int i=0; i<7; i++) {
-            String[] line = sc.nextLine().trim().split(" ");
-            for (int j=0; j<6; j++) {
-               usersDatabase[i][j] = line[j];
-            }
-         }
-      }
-      System.out.println(Arrays.deepToString(usersDatabase));
-
-  }
+	public static void loadPlans(String[][] usersDatabase) throws IOException{
+		try{
+			Scanner sc = new Scanner(new BufferedReader(new FileReader("planlist.txt")));
+			while(sc.hasNextLine()) {
+				for (int i=0; i<usersDatabase.length; i++) {
+					String[] line = sc.nextLine().trim().split("3t356");
+					for (int j=0; j<line.length; j++) {
+						usersDatabase[i][j] = (line[j]);
+					}
+				}
+			}
+			System.out.println(Arrays.deepToString(usersDatabase));
+		} catch (IOException e) {
+			System.out.println("An error occurred.");
+			e.printStackTrace();  
+		}
+	}
 
 }
